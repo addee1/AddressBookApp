@@ -6,10 +6,12 @@ public class ContactManager
     private List<Contact> contacts = new List<Contact>();
     private FileService fileService = new FileService();
 
+
     public ContactManager()
     {
         LoadContacts();
     }
+
 
     public void AddContact()
     {
@@ -47,6 +49,7 @@ public class ContactManager
         Console.WriteLine("Kontakt tillagd.");
     }
 
+
     public void ListContacts()
     {
         Console.Clear();
@@ -63,8 +66,8 @@ public class ContactManager
         Console.WriteLine("Tryck på valfri knapp för att gå tillbaka..");
         Console.ReadKey();
         Console.Clear();
-
     }
+
 
     public void ShowContactDetails()
     {
@@ -112,6 +115,7 @@ public class ContactManager
         Console.Clear();
     }
 
+
     public void RemoveContact()
     {
         Console.Clear();
@@ -141,10 +145,12 @@ public class ContactManager
         Console.Clear();
     }
 
+
     private void LoadContacts()
     {
         contacts = fileService.LoadContacts();
     }
+
 
     public void SaveContacts()
     {

@@ -8,6 +8,7 @@ public class FileService
     private const string FileName = "contacts.json";
     private static string FilePath = Path.Combine(DirectoryPath, FileName);
 
+
     public List<Contact> LoadContacts()
     {
         List<Contact> contacts = new List<Contact>();
@@ -21,10 +22,10 @@ public class FileService
         return contacts;
     }
 
+
     public void SaveContacts(List<Contact> contacts)
     {
         string json = JsonConvert.SerializeObject(contacts, Formatting.Indented);   // Tar listan "Contact" och konverterar den till en JSON sträng. 
         File.WriteAllText(FilePath, json);      // Sparar strängen till en fil
     }
-
 }

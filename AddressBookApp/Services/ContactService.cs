@@ -5,10 +5,12 @@ public class ContactService
 {
     private List<Contact> contacts = new List<Contact>(); // Skapar en lista som är tillgänglig inom klassen. 
 
+
     public void AddContact(Contact contact) // Metod som lägger till en kontakt i listan.
     {
         contacts.Add(contact);
     }
+
 
     public void RemoveContact(string email) // Metod som tar bort en kontakt i listan baserat på e-postadress.
     {
@@ -19,10 +21,12 @@ public class ContactService
         }
     }
 
+
     public Contact GetContactByEmail(string email)      //  Metod som söker efter en kontakt baserat på en e-postadress.
     {
         return contacts.Find(c => c.Email == email);    // Returnera den första kontakten som matchar den angivna e-postadressen.
     }
+
 
     public List<Contact> GetAllContacts()   // Metod som returnera alla kontakter från listan.
     {
