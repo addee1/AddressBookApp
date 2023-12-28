@@ -6,12 +6,12 @@ public class MainMenu
 
     public void Run()
     {
-        Console.ForegroundColor = ConsoleColor.Green; // Ändrar färg på texten till grön
+        Console.ForegroundColor = ConsoleColor.Green;       // Ändrar färg på texten till grön
         Console.WriteLine("ADRESS-BOK AV ADAM OTTOSSON");
         Console.WriteLine("-----------------------------");
 
         bool exit = false;
-        while (!exit) // När den inte är false "gör detta"
+        while (!exit)                                       // När "exit" är false -> Gör detta..
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("1. Lägg till en kontakt");
@@ -23,7 +23,7 @@ public class MainMenu
             int option;
             if (int.TryParse(Console.ReadLine(), out option))
             {
-                switch (option)
+                switch (option)                             // Switchen som anropar olika metoder
                 {
                     case 1:
                         contactManager.AddContact();
@@ -38,7 +38,7 @@ public class MainMenu
                         contactManager.RemoveContact();
                         break;
                     case 5:
-                        exit = true;
+                        exit = true;                        // Tilldelar "exit" värdet "true" och avslutar programmet
                         break;
                     default:
                         Console.Clear();

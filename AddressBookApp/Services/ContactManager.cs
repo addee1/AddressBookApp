@@ -3,17 +3,17 @@ namespace AddressBookApp.Services;
 
 public class ContactManager
 {
-    private List<Contact> contacts = new List<Contact>();
-    private FileService fileService = new FileService();
+    private List<Contact> contacts = new List<Contact>();       // Skapar entom lista som är redo att lagra "Contact" objects.
+    private FileService fileService = new FileService();        // Skapar en instans av "FileService" för att använda dens metoder
 
 
-    public ContactManager()
+    public ContactManager()         // Anropar metoden "LoadContacts".
     {
         LoadContacts();
     }
 
 
-    public void AddContact()
+    public void AddContact()        // Anropar metoden "AddContact".
     {
         Contact contact = new Contact();
 
@@ -57,7 +57,7 @@ public class ContactManager
         Console.WriteLine("KONTAKT-LISTA:");
         Console.WriteLine("--------------");
         Console.ForegroundColor = ConsoleColor.White;
-        foreach (var contact in contacts)  // Skriver ut alla kontakter i listan
+        foreach (var contact in contacts)                   // Skriver ut alla kontakter i listan
         {
             Console.WriteLine($"Namn: {contact.FirstName} {contact.LastName} Telefonnummer: {contact.PhoneNumber}, E-post: {contact.Email}, Adress: {contact.Address}");
         }
@@ -80,7 +80,7 @@ public class ContactManager
         string email = Console.ReadLine()!;
         Console.Clear();
 
-        var contact = contacts.Find(c => c.Email == email); // Söker efter en kontakt i listan "contacts" med epost-adressen.
+        var contact = contacts.Find(c => c.Email == email); // Söker efter en kontakt i listan "contacts" med epost-adressen. Om den INTE är null -> skriv ut information.
         if (contact != null)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -103,7 +103,7 @@ public class ContactManager
         }
         else
         {
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Red;         // Om den är null (kontakten finns inte i listan) -> Skriv ut meddelande.
             Console.WriteLine("Kontakten hittades inte.");
             Console.WriteLine("");
         }
@@ -123,7 +123,7 @@ public class ContactManager
         string email = Console.ReadLine()!;
         Console.Clear();
 
-        var contact = contacts.Find(c => c.Email == email);
+        var contact = contacts.Find(c => c.Email == email);     // Söker efter en kontakt i listan "contacts" med epost-adressen. Om den INTE är null -> Raderar från listan
         if (contact != null)
         {
             contacts.Remove(contact);
@@ -132,7 +132,7 @@ public class ContactManager
         }
         else
         {
-            Console.Clear();
+            Console.Clear();                                    // Om den är null (Kontakten finns inte i listan) -> Skriv ut meddelande
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Kontakten hittades inte.");
             Console.ForegroundColor = ConsoleColor.White;
@@ -146,13 +146,13 @@ public class ContactManager
     }
 
 
-    private void LoadContacts()
+    public void LoadContacts()                 // Laddar kontakter
     {
         contacts = fileService.LoadContacts();
     }
 
 
-    public void SaveContacts()
+    public void SaveContacts()                  // Sparar kontakter
     {
         fileService.SaveContacts(contacts);
     }
